@@ -17,6 +17,25 @@ Self-hosted GitHub Actions runner running on Proxmox LXC CT 206 (Ubuntu 24.04).
 | `scripts/install-runner.sh` | Installs runner binary inside CT 206 |
 | `scripts/register-to-repo.sh` | Registers runner to a single GitHub repo |
 | `scripts/register-all-repos.sh` | Registers runner to all `justinporter73` repos |
+| `scripts/health-check.sh` | Checks all runner services and GitHub status |
+
+## Health Checks
+
+The `scripts/health-check.sh` script verifies all runner instances:
+
+1. **Service check** — lists all `actions.runner.*` systemd services on CT 206
+2. **GitHub status** — queries GitHub API for runner status across all repos
+3. **Auto-restart** — any inactive service gets restarted automatically
+
+Run manually:
+```bash
+PAT=<ghcr_org_pat> ./scripts/health-check.sh
+```
+
+Or schedule weekly via cron (Mondays 9:00 AM):
+```bash
+0 9 * * 1 PAT=$(grep '^GHCR_ORG_PAT=' /path/to/.env | cut -d= -f2 | tr -d '"') /root/project/proxmox-github-runner/scripts/health-check.sh
+```
 
 ## Deployment
 
