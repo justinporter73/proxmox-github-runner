@@ -1,11 +1,11 @@
 # proxmox-github-runner
 
-Self-hosted GitHub Actions runner running on Proxmox LXC CT 206 (Ubuntu 22.04).
+Self-hosted GitHub Actions runner running on Proxmox LXC CT 206 (Ubuntu 24.04).
 
 ## Infrastructure
 
 - **Host:** Proxmox VE (`pve` · 192.168.2.200)
-- **Container:** CT 206 · `github-runner` · Ubuntu 22.04
+- **Container:** CT 206 · `github-runner` · Ubuntu 24.04
 - **Runner:** `actions/runner` latest, systemd service
 - **Scope:** Repo-level runner, registered to each `justinporter73` repository
 
