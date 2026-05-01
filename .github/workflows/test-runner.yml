@@ -4,7 +4,7 @@ on:
 
 jobs:
   test:
-    runs-on: [self-hosted, linux, proxmox]
+    runs-on: proxmox-ct206
     steps:
       - name: Check environment
         run: |
